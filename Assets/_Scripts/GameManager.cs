@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public float timer = 0f;
     private bool _isGameActive = true;
 
+    public GameObject TextTimer;
+
     void Awake() 
     { 
         if (S == null) S = this; 
@@ -23,9 +25,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         if (!_isGameActive) return;
 
-        timer += Time.deltaTime;
+        timer = Time.deltaTime + timer;
         if (timerText != null) 
             timerText.text = "Time: " + timer.ToString("F2") + "s";
 
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
             GameOver(true);
         }
     }
+
 
     /// <summary>
     /// Проверяет, остались ли на сцене живые цели.
@@ -62,7 +66,14 @@ public class GameManager : MonoBehaviour
     // Метод для совместимости со старыми вызовами из Target.cs
     public void OnEnemyDefeated() { /* Логика теперь в Update */ }
 
-    public void AddBonusTime(float amount) { if (_isGameActive) timer += amount; }
+    public void AddBonusTime(float amount) 
+    { 
+        if (_isGameActive) timer += amount;
+        TextAnimations1 txtAnimator = TextTimer.GetComponent<TextAnimations1>();
+        if (txtAnimator != null) { txtAnimator.startAnim = true; }
+
+
+    }
 
     /// <summary>
     /// Завершает игру и обрабатывает сохранение рекордов.
