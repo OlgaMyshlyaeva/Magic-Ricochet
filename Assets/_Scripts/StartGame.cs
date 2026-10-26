@@ -19,6 +19,8 @@ public class StartGame : MonoBehaviour
         // Проверяем, существует ли сцена с таким именем (опционально для надежности)
         if (!string.IsNullOrEmpty(firstLevelName))
         {
+            PlayerPrefs.SetInt("NeedShowPanelHelp", 1);
+
             SceneManager.LoadScene(firstLevelName);
         }
         else
