@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Controls enemy behavior including patrolling, health management, and death effects.
@@ -26,6 +27,13 @@ public class EnemyPatrol : MonoBehaviour
     private MeshRenderer _renderer;
     private Rigidbody _rb;
 
+    public GameObject PlusFiveSecondPNG;
+    public GameObject BoomPNG;
+    private SoundsMaster soundsMasterScript;
+    private GameObject TextTimer;
+    private TextAnimations1 ScriptAnimTimer;
+
+
     void Awake()
     {
         // Кэширование компонентов для оптимизации
@@ -37,6 +45,10 @@ public class EnemyPatrol : MonoBehaviour
     {
         _startPos = transform.position;
         InitializeEnemy();
+        GameObject soundsMaster = GameObject.Find("SoundMaster");
+        soundsMasterScript = soundsMaster.GetComponent<SoundsMaster>();
+        TextTimer = GameObject.Find("TimerText");
+        ScriptAnimTimer = TextTimer.GetComponent<TextAnimations1>();
     }
 
     /// <summary>
@@ -75,17 +87,19 @@ public class EnemyPatrol : MonoBehaviour
         {
             // Уменьшаем здоровье и уничтожаем снаряд
             health--;
-            Destroy(collision.gameObject); 
+            //Destroy(collision.gameObject); 
 
             if (health <= 0) 
             {
                 Die();
+                soundsMasterScript.PlaySoundScatteringofbones(); //Звук смерти скелета
             }
             else 
             {
                 // Визуальный фидбек при попадании (не смертельном)
                 if (CameraShake.S) CameraShake.S.Shake(0.1f, 0.15f);
                 Debug.Log($"{gameObject.name} took damage! Remaining HP: {health}");
+                soundsMasterScript.PlaySoundBonecrunching();    //Звук костей при попадании в скелета с HP>1
             }
         }
     }
@@ -106,7 +120,23 @@ public class EnemyPatrol : MonoBehaviour
         else 
         {
             // Бонус времени за красного скелета
-            if (type == EnemyType.Red) GameManager.S.AddBonusTime(5f);
+
+
+            if (type == EnemyType.Red) 
+            { 
+                GameManager.S.AddBonusTime(5f); 
+                GameObject spawnedObject = Instantiate(PlusFiveSecondPNG, transform.position, Quaternion.identity);
+                StartCoroutine(AnimateAndDestroy(spawnedObject));
+                soundsMasterScript.PlaySoundAsimplebell();  //Проигрывание звука колокольчика
+                ScriptAnimTimer.startAnim = true;
+            }
+
+            if (type == EnemyType.Gold)
+            {
+                GameObject spawnedObject = Instantiate(BoomPNG, transform.position, Quaternion.identity);
+                StartCoroutine(AnimateAndDestroy(spawnedObject));
+            }
+
             // ПРИМЕЧАНИЕ: GameManager сам проверит отсутствие целей в Update
         }
 
@@ -122,4 +152,41 @@ public class EnemyPatrol : MonoBehaviour
         if (CameraShake.S) CameraShake.S.Shake(0.2f, 0.3f);
         Destroy(gameObject, 1.5f);
     }
+
+
+
+
+    public IEnumerator AnimateAndDestroy(GameObject spawnedObject)
+    {
+        
+        Vector3 startPosition = spawnedObject.transform.position;
+
+        Vector3 endPosition = startPosition + Vector3.up * 4f;
+
+        float elapsedTime = 0f;
+
+        // Цикл для анимации подъема
+        while (elapsedTime < 0.5f)
+        {
+ 
+            float t = elapsedTime / 0.5f;
+
+            spawnedObject.transform.position = Vector3.Lerp(startPosition, endPosition, t);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Destroy(spawnedObject);
+    }
+
+
+
+
+
+
+
+
+
 }

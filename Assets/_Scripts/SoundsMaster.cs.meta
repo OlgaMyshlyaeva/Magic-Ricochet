@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 47311ed52a8e70a448a09a8a43d840fe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FireballExplosion: {fileID: 8300000, guid: b566d1854d8cf9447ad8d41e9d956063, type: 3}
+  - Fireballrelease: {fileID: 8300000, guid: 5ea66d7e21e0b9c478a2acd4879df7f2, type: 3}
+  - Sadtromboneacappella: {fileID: 8300000, guid: 3eb4abd439f9e954f843e62c110e4042, type: 3}
+  - Sadtrombone1: {fileID: 8300000, guid: c34411975bd6d2b419deb51ff2f693b4, type: 3}
+  - Sadtromboneshort: {fileID: 8300000, guid: 799c0f9bbd8b3fb4a99168eb9926eea2, type: 3}
+  - Sadtromboneplayback: {fileID: 8300000, guid: 11eb262aac4d87643a2ecc13840f3954, type: 3}
+  - Sadtrombonecartoon: {fileID: 8300000, guid: 21db597445f808344a8720c176f234fa, type: 3}
+  - Bell_miss1: {fileID: 8300000, guid: 149008e8d8dd28d4e8a33f638cba74b8, type: 3}
+  - Bell_miss2: {fileID: 8300000, guid: 2aa41e815faf7794f9de43ada59efc93, type: 3}
+  - Bell_miss3: {fileID: 8300000, guid: bc62d7cd39bb97a4895677b8ae96042f, type: 3}
+  - Bell_miss4: {fileID: 8300000, guid: 77f0429ffc9579f4c9e01fb8641e7898, type: 3}
+  - Fireballflight2: {fileID: 8300000, guid: 706985d11b00a9f42808568fefa0d61f, type: 3}
+  - Flightofthefireball3: {fileID: 8300000, guid: 72b0588264edad14aabb47bd4e3fb9d0, type: 3}
+  - FireballFlight: {fileID: 8300000, guid: 08fbfaf03fceefb4aba60bf000b96cc9, type: 3}
+  - FireballHit2: {fileID: 8300000, guid: 25ef5aa1d80c68f4db0afe541b3afa01, type: 3}
+  - Fireballhit3: {fileID: 8300000, guid: abee17548ebad2c4aba785a3528c497b, type: 3}
+  - Hittingafireball: {fileID: 8300000, guid: d5d4284d614bae34298bf24439695763, type: 3}
+  - Asimplebell: {fileID: 8300000, guid: 4ed8b226b87b51c4ebf601098ba00275, type: 3}
+  - Scatteringofbones: {fileID: 8300000, guid: abf7b71637edee942a08522bb8ffd9d4, type: 3}
+  - Bonecrunching: {fileID: 8300000, guid: 9667c9f3e31f44340b60f64e0298fda4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

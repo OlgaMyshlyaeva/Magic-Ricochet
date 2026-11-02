@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Enemies
+  - BackWallForDestroingBalls
   layers:
   - Default
   - TransparentFX

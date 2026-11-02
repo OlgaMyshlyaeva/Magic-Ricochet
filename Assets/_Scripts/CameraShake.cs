@@ -47,6 +47,7 @@ public class CameraShake : MonoBehaviour
             transform.localPosition = _originalPos + (randomOffset * dampening);
 
             elapsed += Time.deltaTime;
+            if (Time.timeScale == 0) { break; }
             yield return null; // Ждем следующего кадра
         }
 

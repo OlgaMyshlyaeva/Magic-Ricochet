@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Главный менеджер игры. Отвечает за таймер, условия победы и сохранение рекордов.
@@ -11,25 +12,54 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Settings")]
     public TextMeshProUGUI timerText;
+    public GameObject Besttime;
     
     [Header("Game Stats")]
     public float timer = 0f;
     private bool _isGameActive = true;
+    public bool startingGame = false;
+
+
+    public GameObject TextTimer;
+    public TextMeshProUGUI BestTimeOnGame;
+
 
     void Awake() 
     { 
         if (S == null) S = this; 
     }
 
+    private void Start()
+    {
+        if (BestTimeOnGame != null) { BestTimeOnGame.text = string.Format("{0:00}:{1:00}.{2:00}s", Mathf.FloorToInt(PlayerPrefs.GetFloat("BestTime") / 60F), Mathf.FloorToInt(PlayerPrefs.GetFloat("BestTime") % 60F), Mathf.Min(Mathf.RoundToInt((PlayerPrefs.GetFloat("BestTime") % 60F % 1F * 100)), 99));  }
+        if (PlayerPrefs.GetFloat("BestTime") == 0f) { Besttime.SetActive(false); } else { Besttime.SetActive(true); }
+    }
+
     void Update()
     {
         if (!_isGameActive) return;
 
-        timer += Time.deltaTime;
-        if (timerText != null) 
-            timerText.text = "Time: " + timer.ToString("F2") + "s";
 
-        // Если все цели (кроме черных) уничтожены — это ПОБЕДА
+        if (startingGame)
+        {
+            timer = Time.deltaTime + timer;
+        }
+        if (timerText != null)
+        {
+            int minutes = Mathf.FloorToInt(timer / 60F);
+            float remainingSeconds = timer % 60F;
+
+
+            //timerText.text = string.Format("{0:00}:{1:00}:{2:00}s", minutes, Mathf.FloorToInt(remainingSeconds), (remainingSeconds - Mathf.FloorToInt(remainingSeconds)) * 100);
+
+            timerText.text = string.Format("{0:00}:{1:00}.{2:00}s", minutes, Mathf.FloorToInt(remainingSeconds), Mathf.Min(Mathf.RoundToInt((remainingSeconds % 1F * 100)),99));
+
+            //timerText.text = timer.ToString("F2") + "s";
+
+        }
+
+
+        // Если все цели (кроме черных и красных) уничтожены — это ПОБЕДА
         if (CheckVictoryConditions())
         {
             GameOver(true);
@@ -41,6 +71,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private bool CheckVictoryConditions()
     {
+        /*
         EnemyPatrol[] allEnemies = Object.FindObjectsByType<EnemyPatrol>(FindObjectsSortMode.None);
         foreach (EnemyPatrol enemy in allEnemies)
         {
@@ -48,6 +79,27 @@ public class GameManager : MonoBehaviour
             if (enemy.type != EnemyPatrol.EnemyType.Black && !enemy.isDead) 
                 return false; 
         }
+        */
+
+        EnemyPatrol[] allEnemies = Object.FindObjectsByType<EnemyPatrol>(FindObjectsSortMode.None);
+
+        foreach (EnemyPatrol enemy in allEnemies)
+        {
+            if ((!enemy.isDead && (enemy.type != EnemyPatrol.EnemyType.Black && enemy.type != EnemyPatrol.EnemyType.Red)))
+            {
+                return false;
+                
+            }
+        }
+
+        /*
+        foreach (EnemyPatrol enemy in allEnemies)
+        {
+            // Если нашли хоть одного НЕ красного, который еще жив — играем дальше
+            if ((enemy.type != EnemyPatrol.EnemyType.Red && !enemy.isDead))
+                return false;
+        }
+        */
 
         // Если есть скрипты Target (вазы/ящики), проверяем и их
         Target[] allTargets = Object.FindObjectsByType<Target>(FindObjectsSortMode.None);
