@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Controls enemy behavior including patrolling, health management, and death effects.
@@ -25,12 +26,13 @@ public class EnemyPatrol : MonoBehaviour
     [HideInInspector] public bool isDead = false; // Флаг для GameManager
     private MeshRenderer _renderer;
     private Rigidbody _rb;
-<<<<<<< Updated upstream
-=======
+
     public GameObject PlusFiveSecondPNG;
     public GameObject BoomPNG;
     private SoundsMaster soundsMasterScript;
->>>>>>> Stashed changes
+    private GameObject TextTimer;
+    private TextAnimations1 ScriptAnimTimer;
+
 
     void Awake()
     {
@@ -45,6 +47,8 @@ public class EnemyPatrol : MonoBehaviour
         InitializeEnemy();
         GameObject soundsMaster = GameObject.Find("SoundMaster");
         soundsMasterScript = soundsMaster.GetComponent<SoundsMaster>();
+        TextTimer = GameObject.Find("TimerText");
+        ScriptAnimTimer = TextTimer.GetComponent<TextAnimations1>();
     }
 
     /// <summary>
@@ -116,17 +120,23 @@ public class EnemyPatrol : MonoBehaviour
         else 
         {
             // Бонус времени за красного скелета
-<<<<<<< Updated upstream
-            if (type == EnemyType.Red) GameManager.S.AddBonusTime(5f);
-=======
+
+
             if (type == EnemyType.Red) 
             { 
                 GameManager.S.AddBonusTime(5f); 
                 GameObject spawnedObject = Instantiate(PlusFiveSecondPNG, transform.position, Quaternion.identity);
                 StartCoroutine(AnimateAndDestroy(spawnedObject));
                 soundsMasterScript.PlaySoundAsimplebell();  //Проигрывание звука колокольчика
+                ScriptAnimTimer.startAnim = true;
             }
->>>>>>> Stashed changes
+
+            if (type == EnemyType.Gold)
+            {
+                GameObject spawnedObject = Instantiate(BoomPNG, transform.position, Quaternion.identity);
+                StartCoroutine(AnimateAndDestroy(spawnedObject));
+            }
+
             // ПРИМЕЧАНИЕ: GameManager сам проверит отсутствие целей в Update
         }
 
@@ -142,4 +152,41 @@ public class EnemyPatrol : MonoBehaviour
         if (CameraShake.S) CameraShake.S.Shake(0.2f, 0.3f);
         Destroy(gameObject, 1.5f);
     }
+
+
+
+
+    public IEnumerator AnimateAndDestroy(GameObject spawnedObject)
+    {
+        
+        Vector3 startPosition = spawnedObject.transform.position;
+
+        Vector3 endPosition = startPosition + Vector3.up * 4f;
+
+        float elapsedTime = 0f;
+
+        // Цикл для анимации подъема
+        while (elapsedTime < 0.5f)
+        {
+ 
+            float t = elapsedTime / 0.5f;
+
+            spawnedObject.transform.position = Vector3.Lerp(startPosition, endPosition, t);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Destroy(spawnedObject);
+    }
+
+
+
+
+
+
+
+
+
 }

@@ -19,12 +19,11 @@ public class GameManager : MonoBehaviour
     private bool _isGameActive = true;
     public bool startingGame = false;
 
-<<<<<<< Updated upstream
-=======
+
     public GameObject TextTimer;
     public TextMeshProUGUI BestTimeOnGame;
 
->>>>>>> Stashed changes
+
     void Awake() 
     { 
         if (S == null) S = this; 
@@ -40,11 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if (!_isGameActive) return;
 
-<<<<<<< Updated upstream
-        timer += Time.deltaTime;
-        if (timerText != null) 
-            timerText.text = "Time: " + timer.ToString("F2") + "s";
-=======
+
         if (startingGame)
         {
             timer = Time.deltaTime + timer;
@@ -53,7 +48,7 @@ public class GameManager : MonoBehaviour
         {
             int minutes = Mathf.FloorToInt(timer / 60F);
             float remainingSeconds = timer % 60F;
->>>>>>> Stashed changes
+
 
             //timerText.text = string.Format("{0:00}:{1:00}:{2:00}s", minutes, Mathf.FloorToInt(remainingSeconds), (remainingSeconds - Mathf.FloorToInt(remainingSeconds)) * 100);
 

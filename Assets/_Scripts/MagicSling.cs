@@ -12,13 +12,11 @@ public class MagicSling : MonoBehaviour
     private float delayBetweenCalls = 0.1f; // Пауза между выстрелами
     private float lastCallTime = -Mathf.Infinity; //Время последнего выстрела
     private SoundsMaster soundsMasterScript;
+    public Camera spellCamera;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            LaunchProjectile();
-        }
+     
     }
     private void Start()
     {
@@ -29,23 +27,8 @@ public class MagicSling : MonoBehaviour
     private void LaunchProjectile()
     {
         if (spellPrefab == null) return;
-<<<<<<< Updated upstream
 
-        // Определение направления выстрела через Raycast из камеры
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        // Создание снаряда с отступом от камеры
-        GameObject ball = Instantiate(spellPrefab, transform.position + ray.direction * 1.2f, Quaternion.identity);
-        
-        if (ball.TryGetComponent<Rigidbody>(out Rigidbody rb))
-        {
-            // VelocityChange игнорирует массу, обеспечивая одинаковую скорость для всех снарядов
-            rb.AddForce(ray.direction * fireForce, ForceMode.VelocityChange);
-        }
 
-        // Автоматическая очистка памяти
-        Destroy(ball, projectileLifeTime);
-=======
         if (spellCamera == null) return;
 
         if ((Time.time - lastCallTime) >= delayBetweenCalls)
@@ -96,7 +79,7 @@ public class MagicSling : MonoBehaviour
             // Автоматическая очистка памяти
             Destroy(ball, projectileLifeTime);
         }
->>>>>>> Stashed changes
+
     }
 }
 

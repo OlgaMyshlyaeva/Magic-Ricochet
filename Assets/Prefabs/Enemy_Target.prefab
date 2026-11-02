@@ -155,8 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf55496a031744ff8356173ec206116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrol
-  scoreValue: 100
-  explosionPrefab: {fileID: 7027281260115331445, guid: 1d5f513fa737040ea924a3c62bde7677, type: 3}
+  type: 0
+  health: 1
   speed: 2
   distance: 3
-  startPos: {x: 0, y: 0, z: 0}
+  goldMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
+  blackMaterial: {fileID: 0}
+  isDead: 0
+  PlusFiveSecondPNG: {fileID: 1510380675046277671, guid: d4958b3af7a6bf94cb74800a84dfb911, type: 3}
+  BoomPNG: {fileID: 3228856768596794206, guid: 8289343b49500664080cd94bfa2986c5, type: 3}

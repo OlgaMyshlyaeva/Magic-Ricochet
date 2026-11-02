@@ -268,8 +268,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd163fe94349445b0a74faa5a1d9433e, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &185578746
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +416,6 @@ MonoBehaviour:
   PanelOnPause: {fileID: 0}
   PanelOnGame: {fileID: 0}
   PanelHelpOnStart: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &189836751
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +730,7 @@ Camera:
   far clip plane: 1000
   field of view: 73
   orthographic: 0
-  orthographic size: 0.24489796
+  orthographic size: 2.2180452
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -808,24 +805,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
-<<<<<<< Updated upstream
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27977bc605d174e18a5bc9a175d77c9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagicSling
-  spellPrefab: {fileID: 3120478860546114516, guid: 2b3653f48d52242269e6382358da7249, type: 3}
-  fireForce: 10
-  projectileLifeTime: 2.5
-=======
->>>>>>> Stashed changes
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,8 +1107,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd163fe94349445b0a74faa5a1d9433e, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &589624809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,8 +1159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicSling
   spellPrefab: {fileID: 3120478860546114516, guid: 2b3653f48d52242269e6382358da7249, type: 3}
-  spellCamera: {fileID: 330585545}
   fireForce: 10
+  spellCamera: {fileID: 330585545}
 --- !u!114 &589624812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1417,6 @@ MonoBehaviour:
   Asimplebell: {fileID: 8300000, guid: 4ed8b226b87b51c4ebf601098ba00275, type: 3}
   Scatteringofbones: {fileID: 8300000, guid: abf7b71637edee942a08522bb8ffd9d4, type: 3}
   Bonecrunching: {fileID: 8300000, guid: 9667c9f3e31f44340b60f64e0298fda4, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &690027142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1522,8 +1498,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd163fe94349445b0a74faa5a1d9433e, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &691329393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,12 +1683,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: 11.2}
-  m_LocalScale: {x: 160, y: 90, z: 1}
+  m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &723179094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,8 +1801,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &794361262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1949,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794361262}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &829295722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,8 +2373,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd163fe94349445b0a74faa5a1d9433e, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1061104988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,7 +2449,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061104988}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1154308959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,12 +2496,9 @@ MonoBehaviour:
   timerText: {fileID: 1623624751}
   Besttime: {fileID: 14823232}
   timer: 0
-<<<<<<< Updated upstream
-=======
   startingGame: 0
   TextTimer: {fileID: 1623624749}
   BestTimeOnGame: {fileID: 927777382}
->>>>>>> Stashed changes
 --- !u!1 &1623624749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2510,7 @@ GameObject:
   - component: {fileID: 1623624750}
   - component: {fileID: 1623624752}
   - component: {fileID: 1623624751}
+  - component: {fileID: 1623624753}
   m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
@@ -2672,8 +2637,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623624749}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1623624753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,7 +2785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: a4db1810b2774914890921cd7959d5fb, type: 3}
+  m_Texture: {fileID: 2800000, guid: 40e4921ab2bfba6459c7baf3c3244a3f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2837,7 +2800,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670140717}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1001 &1681001650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3020,10 +2982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -3066,14 +3028,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< Updated upstream
-  - {fileID: 1623624750}
-=======
   - {fileID: 197449811}
   - {fileID: 691329394}
   - {fileID: 1061104989}
   - {fileID: 1724270418}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3235,8 +3193,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd163fe94349445b0a74faa5a1d9433e, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &2072594795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3341,6 @@ MonoBehaviour:
   PanelOnPause: {fileID: 1061104988}
   PanelOnGame: {fileID: 691329393}
   PanelHelpOnStart: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &2109247320
 GameObject:
   m_ObjectHideFlags: 0
