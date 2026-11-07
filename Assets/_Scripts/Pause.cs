@@ -17,7 +17,7 @@ public class Pause : MonoBehaviour
     void Start()
     {
         GameManag = GameObject.Find("GameManager");
-        GamemanagerScript = GameManag.gameObject.GetComponent<GameManager>();
+        if (GameManag != null) { GamemanagerScript = GameManag.gameObject.GetComponent<GameManager>(); }
         if (PanelHelpOnStart != null && PlayerPrefs.GetInt("NeedShowPanelHelp", 0) == 1)
         {
             PanelHelpOnStart.SetActive(true);
@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour
         }
         else
         {
-            GamemanagerScript.startingGame = true;
+            if (GameManag != null) { GamemanagerScript.startingGame = true; }
         }
         if (PanelOnPause != null)
         {

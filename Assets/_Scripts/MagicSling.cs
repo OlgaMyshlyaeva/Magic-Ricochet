@@ -6,20 +6,27 @@ using UnityEngine;
 public class MagicSling : MonoBehaviour
 {
     [Header("Launcher Settings")]
-    public GameObject spellPrefab;
+    public GameObject spellPrefab1;
+    public GameObject spellPrefab2;
+    private GameObject spellPrefab;
     public float fireForce = 25f; 
     private float projectileLifeTime = 30.5f; // Ограничено для предотвращения случайных попаданий
-    private float delayBetweenCalls = 0.1f; // Пауза между выстрелами
+    private float delayBetweenCalls = 0.2f; // Пауза между выстрелами
     private float lastCallTime = -Mathf.Infinity; //Время последнего выстрела
     private SoundsMaster soundsMasterScript;
     public Camera spellCamera;
+    public bool UseAnotherSpell;
 
     void Update()
     {
-     
+        if (spellPrefab1 != null && spellPrefab2 != null)
+        {
+            if (UseAnotherSpell) { spellPrefab = spellPrefab1; } else { spellPrefab = spellPrefab2; }
+        }
     }
     private void Start()
     {
+        spellPrefab = spellPrefab1;
         GameObject soundsMaster = GameObject.Find("SoundMaster");
         soundsMasterScript = soundsMaster.GetComponent<SoundsMaster>();
     }

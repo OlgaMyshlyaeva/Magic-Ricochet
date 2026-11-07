@@ -29,6 +29,12 @@ public class EnemyPatrol : MonoBehaviour
 
     public GameObject PlusFiveSecondPNG;
     public GameObject BoomPNG;
+    public GameObject Minus1HP;
+    public GameObject Now1HPBoss;
+    public Sprite BossBar3HP;
+    public Sprite BossBar2HP;
+    public Sprite BossBar1HP;
+
     private SoundsMaster soundsMasterScript;
     private GameObject TextTimer;
     private TextAnimations1 ScriptAnimTimer;
@@ -48,7 +54,7 @@ public class EnemyPatrol : MonoBehaviour
         GameObject soundsMaster = GameObject.Find("SoundMaster");
         soundsMasterScript = soundsMaster.GetComponent<SoundsMaster>();
         TextTimer = GameObject.Find("TimerText");
-        ScriptAnimTimer = TextTimer.GetComponent<TextAnimations1>();
+        if (TextTimer != null) { ScriptAnimTimer = TextTimer.GetComponent<TextAnimations1>(); }
     }
 
     /// <summary>
@@ -77,6 +83,21 @@ public class EnemyPatrol : MonoBehaviour
         // Синусоидальное патрулирование (независимо от физики)
         float newX = _startPos.x + Mathf.Sin(Time.time * speed) * distance;
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+
+
+        //Отображение бара хп (для босса)
+        Transform BossBar = transform.Find("boss_hp_bar");
+        if (BossBar != null && type == EnemyType.Gold)
+        {
+            BossBar.gameObject.SetActive(true);
+            SpriteRenderer spriteRenderer = BossBar.GetComponent<SpriteRenderer>();
+            if (health == 3) { spriteRenderer.sprite = BossBar3HP; }
+            if (health == 2) { spriteRenderer.sprite = BossBar2HP; }
+            if (health == 1) { spriteRenderer.sprite = BossBar1HP; }
+
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -91,6 +112,14 @@ public class EnemyPatrol : MonoBehaviour
 
             if (health <= 0) 
             {
+                //Отображение бара хп (для босса)
+                Transform BossBar = transform.Find("boss_hp_bar");
+                if (BossBar != null && type == EnemyType.Gold)
+                {
+                    SpriteRenderer spriteRenderer = BossBar.GetComponent<SpriteRenderer>();
+                    BossBar.gameObject.SetActive(false); spriteRenderer.enabled = false;
+                }
+
                 Die();
                 soundsMasterScript.PlaySoundScatteringofbones(); //Звук смерти скелета
             }
@@ -98,8 +127,25 @@ public class EnemyPatrol : MonoBehaviour
             {
                 // Визуальный фидбек при попадании (не смертельном)
                 if (CameraShake.S) CameraShake.S.Shake(0.1f, 0.15f);
-                Debug.Log($"{gameObject.name} took damage! Remaining HP: {health}");
+                //Debug.Log($"{gameObject.name} took damage! Remaining HP: {health}");
                 soundsMasterScript.PlaySoundBonecrunching();    //Звук костей при попадании в скелета с HP>1
+
+
+                //Вылет popup`ов для босса
+                if (type == EnemyType.Gold)
+                {
+                    if (health>=2) 
+                    {
+                        GameObject spawnedObject = Instantiate(Minus1HP, transform.position, Quaternion.identity);
+                        StartCoroutine(AnimateAndDestroy(spawnedObject));
+                    }
+                    if (health==1)
+                    {
+                        GameObject spawnedObject = Instantiate(Now1HPBoss, transform.position, Quaternion.identity);
+                        StartCoroutine(AnimateAndDestroy(spawnedObject));
+                    }
+                }
+
             }
         }
     }
@@ -161,7 +207,7 @@ public class EnemyPatrol : MonoBehaviour
         
         Vector3 startPosition = spawnedObject.transform.position;
 
-        Vector3 endPosition = startPosition + Vector3.up * 4f;
+        Vector3 endPosition = startPosition + Vector3.up * 3f;
 
         float elapsedTime = 0f;
 

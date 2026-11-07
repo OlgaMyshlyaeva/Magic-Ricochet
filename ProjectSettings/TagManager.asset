@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Enemies
   - BackWallForDestroingBalls
+  - WallsForRicochet
   layers:
   - Default
   - TransparentFX

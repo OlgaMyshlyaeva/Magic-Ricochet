@@ -48,13 +48,7 @@ public class GameManager : MonoBehaviour
         {
             int minutes = Mathf.FloorToInt(timer / 60F);
             float remainingSeconds = timer % 60F;
-
-
-            //timerText.text = string.Format("{0:00}:{1:00}:{2:00}s", minutes, Mathf.FloorToInt(remainingSeconds), (remainingSeconds - Mathf.FloorToInt(remainingSeconds)) * 100);
-
             timerText.text = string.Format("{0:00}:{1:00}.{2:00}s", minutes, Mathf.FloorToInt(remainingSeconds), Mathf.Min(Mathf.RoundToInt((remainingSeconds % 1F * 100)),99));
-
-            //timerText.text = timer.ToString("F2") + "s";
 
         }
 
@@ -137,13 +131,13 @@ public class GameManager : MonoBehaviour
             if (timer < bestTime)
             {
                 PlayerPrefs.SetFloat("BestTime", timer);
-                Debug.Log("New Record Set: " + timer);
+                //Debug.Log("New Record Set: " + timer);
             }
         }
-        else
+        /*else
         {
             Debug.Log("Defeat: Record not updated.");
-        }
+        }*/
         
         PlayerPrefs.Save();
         SceneManager.LoadScene("GameOverScene");
