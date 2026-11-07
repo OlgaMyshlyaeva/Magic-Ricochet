@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 27977bc605d174e18a5bc9a175d77c9e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spellPrefab1: {fileID: 3120478860546114516, guid: 2b3653f48d52242269e6382358da7249, type: 3}
+  - spellPrefab2: {fileID: 3120478860546114516, guid: 2b3653f48d52242269e6382358da7249, type: 3}
+  - spellCamera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
